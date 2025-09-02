@@ -1,1 +1,26 @@
-export default function Hero(){ return (\n  <section style={{padding:'3.5rem 0',background:'#fff'}}>\n    <div className='container' style={{display:'grid',gridTemplateColumns:'1fr 420px',gap:24,alignItems:'center'}}>\n      <div>\n        <h1 style={{fontSize:34,margin:0}}>Your Fire Claim, Fought & Paid — Fast.</h1>\n        <p style={{marginTop:12,color:'#555'}}>Insurance will try to underpay. We make sure you recover every dollar.</p>\n        <div style={{marginTop:16,display:'flex',gap:12}}>\n          <a href="/contact" className='cta'>Get Free Claim Help</a>\n          <a href="/resources">Free Guides</a>\n        </div>\n        <div style={{display:'flex',gap:10,marginTop:18}}>\n          <div style={{padding:12,border:'1px solid #eee',borderRadius:8}}>🏨 Hotel Money</div>\n          <div style={{padding:12,border:'1px solid #eee',borderRadius:8}}>📦 Contents Paid</div>\n          <div style={{padding:12,border:'1px solid #eee',borderRadius:8}}>🔨 Repairs Covered</div>\n        </div>\n        <div className='trust'>FL License # A161638 • No Recovery, No Fee • 1900+ homes built</div>\n      </div>\n      <div style={{borderRadius:8,overflow:'hidden',boxShadow:'0 8px 30px rgba(0,0,0,0.12)'}}>\n        <div style={{width:'100%',height:260,background:'#ddd',display:'flex',alignItems:'center',justifyContent:'center'}}>Emotional Photo Banner</div>\n      </div>\n    </div>\n  </section>\n) }
+export default function Hero() {
+  return (
+    <section style={{ background: "#f44336", color: "#fff", padding: "100px 20px", textAlign: "center" }}>
+      <h2 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>
+        Florida’s Trusted Fire Damage Claim Experts
+      </h2>
+      <p style={{ fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto 30px" }}>
+        We fight for homeowners to maximize insurance payouts after fire, smoke, or water damage.
+      </p>
+      <a
+        href="#contact"
+        style={{
+          background: "#111",
+          color: "#fff",
+          padding: "12px 25px",
+          borderRadius: "6px",
+          textDecoration: "none",
+          fontWeight: "600",
+          display: "inline-block"
+        }}
+      >
+        Get Free Consultation
+      </a>
+    </section>
+  );
+}
