@@ -1,1 +1,5 @@
-import Hero from '../components/Hero'; import TrustStrip from '../components/TrustStrip'; import Link from 'next/link'; export default function Home(){ return (<> <Hero /> <TrustStrip /> <section className='container' style={{padding:'2rem 0'}}><h2>How We Help</h2><p>Step-by-step: inspection, proof of loss, negotiating, payout — you don't pay unless we recover.</p><div style={{display:'flex',gap:12,marginTop:12}}><div style={{flex:1}}><h3>For Homeowners</h3><p>Rebuild, protect family, speed up claim.</p><Link href='/homeowners'><a>Learn more</a></Link></div><div style={{flex:1}}><h3>For Renters</h3><p>Hotel money, clothing replacement, food, belongings.</p><Link href='/renters'><a>Learn more</a></Link></div><div style={{flex:1}}><h3>For Landlords</h3><p>Tenant liability, fast restoration, rental income recovery.</p><Link href='/landlords'><a>Learn more</a></Link></div></div></section></>) }
+import FireClaimsFL from "../src/FireClaimsFL";
+
+export default function Home() {
+  return <FireClaimsFL />;
+}
