@@ -1,196 +1,199 @@
-import React, { useMemo, useState, useEffect } from "react"; 
-import { motion } from "framer-motion"; 
-import { Phone, Menu, X, Home as HomeLg, Users2, Building2, ShieldCheck, CheckCircle2, ChevronRight, MessageCircle, Star, MapPin, Clock, FileText, BookOpen, HelpCircle } from "lucide-react";
+"use client";
 
-// ====== Business Constants ======
-const BRAND = "FireClaimsFL";
-const PHONE_DISPLAY = "(407) 555-0199"; // replace with real
-const PHONE_TEL = "+14075550199"; // replace with real
-const EMAIL = "help@fireclaimsfl.com"; // replace with real
-const ADDRESS = "123 Market St, Orlando, FL 32801"; // replace with real
-const LICENSE = "FL Public Adjuster License # A161638";
+import { motion } from "framer-motion";
+import {
+  Phone,
+  Mail,
+  FileText,
+  Users,
+  ShieldCheck,
+  BookOpen,
+  ArrowRight,
+} from "lucide-react";
 
-// Shared helpers
-const cx = (...classes) => classes.filter(Boolean).join(" ");
-
-const Container = ({ className = "", children }) => (
-  <div className={cx("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", className)}>{children}</div>
-);
-
-const Section = ({ id, className = "", children }) => (
-  <section id={id} className={cx("py-16 md:py-24", className)}>{children}</section>
-);
-
-const PrimaryButton = ({ href, onClick, children, className = "" }) => {
-  const base = "inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-base font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all";
-  return href ? (
-    <a href={href} onClick={onClick} className={cx(base, "bg-red-600 text-white hover:bg-red-700 focus:ring-red-600", className)}>
-      {children}
-    </a>
-  ) : (
-    <button onClick={onClick} className={cx(base, "bg-red-600 text-white hover:bg-red-700 focus:ring-red-600", className)}>
-      {children}
-    </button>
-  );
-};
-
-const GhostButton = ({ href, children, className = "" }) => (
-  <a href={href} className={cx("inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-base font-semibold border border-neutral-300 hover:border-neutral-400 text-neutral-800", className)}>
-    {children}
-  </a>
-);
-
-// ====== Nav ======
-const NAV = [
-  { label: "How We Help", href: "#how-we-help" },
-  { label: "Homeowners", href: "#homeowners" },
-  { label: "Renters", href: "#renters" },
-  { label: "Landlords", href: "#landlords" },
-  { label: "Resources", href: "#resources" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Contact", href: "#contact" },
-];
-
-const Header = ({ open, onToggle }) => {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 2);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return (
-    <header className={cx("sticky top-0 z-50 w-full backdrop-blur bg-white/70 border-b border-neutral-200", scrolled ? "shadow-sm" : "")}>
-      <Container className="flex items-center justify-between py-3">
-        <div className="font-bold text-lg text-red-600">{BRAND}</div>
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium">
-          {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="text-neutral-700 hover:text-neutral-900">
-              {n.label}
-            </a>
-          ))}
-        </nav>
-        <div className="hidden md:flex items-center gap-3">
-          <GhostButton href={`tel:${PHONE_TEL}`}>
-            <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-          </GhostButton>
-          <PrimaryButton href="#contact">Free Claim Review</PrimaryButton>
-        </div>
-        <button className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-300" onClick={onToggle} aria-label="Toggle Menu">
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </Container>
-      {open && (
-        <div className="md:hidden border-t border-neutral-200 bg-white">
-          <Container className="py-2">
-            <nav className="grid py-2">
-              {NAV.map((n) => (
-                <a key={n.href} href={n.href} onClick={onToggle} className="px-2 py-3 text-base text-neutral-800 hover:bg-neutral-50 rounded-lg">
-                  {n.label}
-                </a>
-              ))}
-            </nav>
-            <div className="flex items-center gap-3 pb-4">
-              <PrimaryButton href={`tel:${PHONE_TEL}`} className="flex-1">
-                <Phone className="h-4 w-4" /> Call Now
-              </PrimaryButton>
-              <GhostButton href={`mailto:${EMAIL}`} className="flex-1">Email Us</GhostButton>
-            </div>
-          </Container>
-        </div>
-      )}
-    </header>
-  );
-};
-
-// ====== Hero ======
-const Hero = () => (
-  <div className="text-center py-20">
-    <h1 className="text-4xl md:text-6xl font-extrabold text-neutral-900">Your Fire Claim, Fought & Paid — Fast.</h1>
-    <p className="mt-4 text-lg text-neutral-700">Insurance will try to underpay. We make sure you recover every dollar.</p>
-    <div className="mt-6 flex justify-center gap-4">
-      <PrimaryButton href="#contact">Get Help Now</PrimaryButton>
-      <GhostButton href={`tel:${PHONE_TEL}`}>Call {PHONE_DISPLAY}</GhostButton>
-    </div>
-  </div>
-);
-
-// ====== Footer ======
-const Footer = () => (
-  <footer className="border-t border-neutral-200 bg-white py-10">
-    <Container className="grid grid-cols-1 gap-8 md:grid-cols-4">
-      <div className="space-y-3">
-        <div className="flex items-center gap-2 font-extrabold text-neutral-900">
-          <ShieldCheck className="h-6 w-6 text-red-600" /> {BRAND}
-        </div>
-        <div className="text-sm text-neutral-600">{LICENSE}</div>
-        <div className="text-sm text-neutral-600">© {new Date().getFullYear()} {BRAND}. All rights reserved.</div>
-      </div>
-      <div>
-        <div className="mb-3 font-semibold text-neutral-900">Company</div>
-        <ul className="grid gap-2 text-sm text-neutral-700">
-          {NAV.map((n) => (
-            <li key={n.href}><a className="hover:text-neutral-900" href={n.href}>{n.label}</a></li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <div className="mb-3 font-semibold text-neutral-900">Contact</div>
-        <ul className="grid gap-2 text-sm text-neutral-700">
-          <li><a className="hover:text-neutral-900" href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a></li>
-          <li><a className="hover:text-neutral-900" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
-          <li>{ADDRESS}</li>
-        </ul>
-      </div>
-      <div>
-        <div className="mb-3 font-semibold text-neutral-900">Legal</div>
-        <ul className="grid gap-2 text-sm text-neutral-700">
-          <li>No Recovery, No Fee</li>
-          <li>Serving Florida (Central FL focus)</li>
-          <li>Licensed & Insured</li>
-        </ul>
-      </div>
-    </Container>
-  </footer>
-);
-
-// ====== Main App Component ======
 export default function FireClaimsFL() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // JSON-LD schema for SEO
-  const schema = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "FireClaimsFL.com — Public Loss Adjusters",
-    url: "https://FireClaimsFL.com",
-    areaServed: "Florida",
-    telephone: PHONE_DISPLAY,
-    email: EMAIL,
-    address: { "@type": "PostalAddress", streetAddress: ADDRESS },
-    sameAs: ["https://placlaim.com"],
-    description: "Florida fire insurance claim help: hotel money, contents, rebuild—no recovery, no fee.",
-  }), []);
-
-  // Close mobile menu when navigating in-page
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.target instanceof HTMLAnchorElement && e.target.getAttribute("href")?.startsWith("#")) {
-        setMenuOpen(false);
-      }
-    };
-    window.addEventListener("click", handler);
-    return () => window.removeEventListener("click", handler);
-  }, []);
-
   return (
-    <div>
-      <Header open={menuOpen} onToggle={() => setMenuOpen((o) => !o)} />
-      <main>
-        <Section id="home"><Hero /></Section>
-      </main>
-      <Footer />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Header */}
+      <header className="bg-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-red-600">FireClaimsFL</h1>
+          <nav className="hidden md:flex space-x-8">
+            <a href="#process" className="hover:text-red-600 transition">
+              Our Process
+            </a>
+            <a href="#audience" className="hover:text-red-600 transition">
+              Who We Help
+            </a>
+            <a href="#resources" className="hover:text-red-600 transition">
+              Resources
+            </a>
+            <a href="#contact" className="hover:text-red-600 transition">
+              Contact
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <section className="relative bg-gradient-to-r from-red-600 to-red-400 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-6xl font-bold mb-6"
+          >
+            Florida Fire Insurance Claims Assistance
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-lg md:text-2xl mb-8"
+          >
+            Get the compensation you deserve after a fire damages your home or
+            business
+          </motion.p>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            className="bg-white text-red-600 font-semibold px-6 py-3 rounded-full shadow-lg inline-flex items-center"
+          >
+            Start Your Claim <ArrowRight className="ml-2" />
+          </motion.a>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center mb-12">
+            Our Simple 3-Step Process
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Phone,
+                title: "Contact Us",
+                desc: "Reach out for a free consultation.",
+              },
+              {
+                icon: FileText,
+                title: "We Handle Your Claim",
+                desc: "We’ll negotiate with your insurance company.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Get Paid Fairly",
+                desc: "Receive the settlement you’re entitled to.",
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="p-6 bg-gray-50 rounded-2xl shadow text-center"
+              >
+                <step.icon className="mx-auto h-12 w-12 text-red-600 mb-4" />
+                <h4 className="font-semibold text-xl mb-2">{step.title}</h4>
+                <p className="text-gray-600">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who We Help */}
+      <section id="audience" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center mb-12">Who We Help</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-6 bg-white rounded-2xl shadow"
+            >
+              <Users className="h-10 w-10 text-red-600 mb-4" />
+              <h4 className="font-semibold text-xl mb-2">Homeowners</h4>
+              <p className="text-gray-600">
+                Protect your family’s most important asset with expert claim
+                help.
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="p-6 bg-white rounded-2xl shadow"
+            >
+              <ShieldCheck className="h-10 w-10 text-red-600 mb-4" />
+              <h4 className="font-semibold text-xl mb-2">Business Owners</h4>
+              <p className="text-gray-600">
+                Recover losses and rebuild your business with confidence.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Resources */}
+      <section id="resources" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center mb-12">Resources</h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                icon: BookOpen,
+                title: "Claim Filing Guide",
+                desc: "Step-by-step guide to navigating fire insurance claims in Florida.",
+              },
+              {
+                icon: FileText,
+                title: "Common Mistakes",
+                desc: "Avoid these pitfalls when filing your claim.",
+              },
+            ].map((res, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="p-6 bg-gray-50 rounded-2xl shadow"
+              >
+                <res.icon className="h-10 w-10 text-red-600 mb-4" />
+                <h4 className="font-semibold text-xl mb-2">{res.title}</h4>
+                <p className="text-gray-600">{res.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section
+        id="contact"
+        className="py-20 bg-gradient-to-r from-red-600 to-red-400 text-white"
+      >
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h3 className="text-3xl font-bold mb-8">Get in Touch</h3>
+          <p className="mb-8">
+            Our Florida-based team is ready to help with your fire claim.
+          </p>
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            <a
+              href="tel:+1234567890"
+              className="bg-white text-red-600 px-6 py-3 rounded-full font-semibold flex items-center justify-center"
+            >
+              <Phone className="mr-2" /> (123) 456-7890
+            </a>
+            <a
+              href="mailto:help@fireclaimsfl.com"
+              className="bg-white text-red-600 px-6 py-3 rounded-full font-semibold flex items-center justify-center"
+            >
+              <Mail className="mr-2" /> help@fireclaimsfl.com
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-6 text-center">
+        <p>&copy; {new Date().getFullYear()} FireClaimsFL. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
