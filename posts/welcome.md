@@ -1,0 +1,1 @@
+---\ntitle: Welcome to FireClaimsFL\ndate: 2025-09-01\nmeta: "Helpful fire-claims guidance for Florida homeowners."\n---\n\nThis is a starter post. The site will auto-generate posts twice daily once configured.

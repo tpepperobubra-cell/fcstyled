@@ -1,0 +1,1 @@
+export default function FAQs(){ return (<div className='container' style={{padding:'2rem 0'}}><h1>FAQ</h1><h3>Do I have to pay you upfront?</h3><p>No — No Recovery, No Fee.</p><h3>What if I already filed?</h3><p>We can still help with reinspection and negotiation.</p></div>) }

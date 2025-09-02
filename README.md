@@ -1,0 +1,1 @@
+FireClaimsFL - Full Starter (8 pages + Auto Blog)\nSee README in repo for setup.

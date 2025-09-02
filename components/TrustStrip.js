@@ -1,0 +1,1 @@
+export default function TrustStrip(){ return (<div style={{background:'#f7f7f7',padding:'8px 0'}}><div className='container' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}><div>FL License # A161638</div><div>As Seen On: [logos]</div><div>1900+ homes built</div></div></div>) }

@@ -1,0 +1,1 @@
+export default function About(){ return (<div className='container' style={{padding:'2rem 0'}}><h1>About</h1><p>Background: 1900 homes built, construction expertise, licensed PA.</p></div>) }

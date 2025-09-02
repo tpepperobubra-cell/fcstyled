@@ -1,0 +1,1 @@
+import ContactForm from '../components/ContactForm'; export default function Contact(){ return (<div className='container' style={{padding:'2rem 0'}}><h1>Get Free Claim Help Now</h1><p>Tell us what happened — we'll call in 10 minutes.</p><div style={{maxWidth:700}}><ContactForm /></div></div>) }

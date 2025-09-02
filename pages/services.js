@@ -1,0 +1,1 @@
+export default function Services(){ return (<div className='container' style={{padding:'2rem 0'}}><h1>Services</h1><ul><li>Claim review</li><li>Documentation & scope</li><li>Negotiation</li><li>Rebuild estimates</li></ul></div>) }

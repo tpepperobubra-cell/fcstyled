@@ -1,0 +1,1 @@
+export default function ClaimsProcess(){ return (<div className='container' style={{padding:'2rem 0'}}><h1>How We Help</h1><ol><li>Free Claim Review</li><li>Document & Inspect</li><li>Negotiate with Carrier</li><li>You Get Paid</li></ol><p>No Recovery, No Fee.</p></div>) }

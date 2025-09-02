@@ -1,0 +1,1 @@
+export default function CTAButton({href,children}){ return (<a className='cta' href={href||'/contact'}>{children||'Get Free Claim Help'}</a>) }

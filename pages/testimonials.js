@@ -1,0 +1,1 @@
+export default function Testimonials(){ return (<div className='container' style={{padding:'2rem 0'}}><h1>Testimonials</h1><p>"They got me hotel money and a full rebuild estimate — J.S."</p></div>) }
