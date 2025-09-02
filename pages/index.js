@@ -1,5 +1,9 @@
-import FireClaimsFL from "../src/FireClaimsFL";
-
 export default function Home() {
-  return <FireClaimsFL />;
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <h1 className="text-5xl font-bold text-red-600">
+        Tailwind is working 🎉
+      </h1>
+    </div>
+  );
 }
