@@ -1,1 +1,16 @@
-import Link from 'next/link'\nexport default function Header(){ return (\n  <header style={{position:'sticky',top:0,zIndex:40,background:'#fff'}}>\n    <div className='container' style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'12px 0'}}>\n      <div style={{display:'flex',alignItems:'center',gap:12}}>\n        <div style={{width:48,height:48,background:'#c00000',borderRadius:8,color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:800}}>FC</div>\n        <div>\n          <div style={{fontWeight:700}}>FireClaimsFL.com</div>\n          <div style={{fontSize:12,color:'#666'}}>FL License A161638</div>\n        </div>\n      </div>\n      <nav style={{display:'flex',gap:14,alignItems:'center'}}>\n        <Link href="/how-we-help">How We Help</Link>\n        <Link href="/homeowners">Homeowners</Link>\n        <Link href="/renters">Renters</Link>\n        <Link href="/landlords">Landlords</Link>\n        <Link href="/resources">Resources</Link>\n        <Link href="/why-us">Why Us</Link>\n        <a className='cta' href="/contact">Call Now – Free Claim Review</a>\n      </nav>\n    </div>\n  </header>\n) }
+export default function Header() {
+  return (
+    <header style={{ background: "#111", color: "#fff", padding: "20px 0" }}>
+      <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <h1 style={{ margin: 0, fontSize: "1.5rem", fontWeight: "700" }}>FireClaimsFL</h1>
+        <nav>
+          <ul style={{ listStyle: "none", display: "flex", gap: "20px", margin: 0, padding: 0 }}>
+            <li><a href="#services" style={{ color: "#fff", textDecoration: "none" }}>Services</a></li>
+            <li><a href="#about" style={{ color: "#fff", textDecoration: "none" }}>About</a></li>
+            <li><a href="#contact" style={{ color: "#fff", textDecoration: "none" }}>Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+}
